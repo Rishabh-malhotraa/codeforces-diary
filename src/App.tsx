@@ -1,10 +1,16 @@
 import React from 'react';
 import './App.css';
-import LandingPage from './components/Landing';
+import LandingPage from './components/Landing/index';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 function App() {
   return (
     <>
-      <LandingPage />
+      <Router>
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/viz" exact component={Dashboard} />
+        <Redirect to="/" />
+      </Router>
     </>
   );
 }

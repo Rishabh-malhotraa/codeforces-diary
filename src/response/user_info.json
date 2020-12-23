@@ -1,0 +1,23 @@
+{
+  "status": "OK",
+  "result": [
+    {
+      "lastName": "Malhotra",
+      "country": "India",
+      "lastOnlineTimeSeconds": 1608589371,
+      "city": "Lucknow",
+      "rating": 981,
+      "friendOfCount": 1,
+      "titlePhoto": "//userpic.codeforces.com/1207268/title/315d51cd5abdf38a.jpg",
+      "handle": "rishgod",
+      "avatar": "//userpic.codeforces.com/1207268/avatar/c00cee170fc64c82.jpg",
+      "firstName": "Rishabh",
+      "contribution": 0,
+      "organization": "Thapar University",
+      "rank": "newbie",
+      "maxRating": 1108,
+      "registrationTimeSeconds": 1564682141,
+      "maxRank": "newbie"
+    }
+  ]
+}
