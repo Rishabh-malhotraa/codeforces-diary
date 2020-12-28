@@ -1,10 +1,9 @@
-import React from 'react';
-import './App.css';
-import LandingPage from './components/Landing/index';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import SideBar from './components/SideBar';
-import SideBarII from './components/SideBarII';
+import React from "react";
+import "./App.css";
+import LandingPage from "./components/Landing/index";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
       <Router>
         <Route path="/" exact component={LandingPage} />
         <Route path="/viz" exact component={Dashboard} />
-        <Route path="/side" exact component={SideBar} />
-        <Route path="/sideII" exact component={SideBarII} />
+        <Route path="/dashboard" exact component={SideBar} />
       </Router>
     </>
   );

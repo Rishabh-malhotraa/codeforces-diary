@@ -151,7 +151,6 @@ const Heatmap = () => {
               return `color-github-${count}`;
             }}
             tooltipDataAttrs={(value: QuestionMapType) => {
-              console.log(value);
               if (value && value?.date && value?.questions) {
                 return {
                   "data-tip": `

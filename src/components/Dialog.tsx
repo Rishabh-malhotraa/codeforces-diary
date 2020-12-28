@@ -13,16 +13,17 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { QuestionMapType } from "types";
+import { QuestionMapType, QuestionListType } from "types";
 import dateFormat from "dateformat";
 import getDate, { relativeDate } from "utils/getDate";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutlineRounded";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { red, green } from "@material-ui/core/colors";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import { QuestionAnswerSharp } from "@material-ui/icons";
 
+const QUESTION_URL = "https://codeforces.com/problemset/problem";
 interface AppProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,6 +43,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+const prepareURL = (question: QuestionListType) => {
+  const url = `${QUESTION_URL}/${question.problem.contestId}/${question.problem.index}`;
+  return url;
+};
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
@@ -89,12 +95,12 @@ const FullScreenDialog: React.FC<AppProps> = ({ open, setOpen, dialogData }) => 
           </Toolbar>
         </AppBar>
         <List>
-          {questions.map((question) => {
+          {questions.map((question, idx) => {
             const result = question.verdict === "OK" ? true : false;
             const { problem } = question;
             return (
-              <>
-                <ListItem button>
+              <React.Fragment key={idx}>
+                <ListItem button component="a" target="_blank" href={prepareURL(question)}>
                   <ListItemAvatar>
                     {result ? (
                       <CheckCircleOutlineRoundedIcon style={{ color: green[400] }} />
@@ -119,7 +125,7 @@ const FullScreenDialog: React.FC<AppProps> = ({ open, setOpen, dialogData }) => 
                   </ListItemSecondaryAction>
                 </ListItem>
                 <Divider />
-              </>
+              </React.Fragment>
             );
           })}
         </List>
