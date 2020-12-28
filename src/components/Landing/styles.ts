@@ -48,7 +48,6 @@ max-height: 70px;
 
 export const TextWrapper = styled(Typography)`
   text-align: center;
-}
 `;
 
 export const Img = styled.img`

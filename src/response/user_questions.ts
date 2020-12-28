@@ -1,6 +1,6 @@
 
 
-interface data {
+interface result {
   id: number;
   constedId: number;
   problem: {
@@ -13,7 +13,9 @@ interface data {
   }
 }
 
-export const data = {
+export type QuestionListType = typeof QuestionListWrapper.result[0];
+
+export const QuestionListWrapper = {
   "status": "OK",
   "result": [
     {
