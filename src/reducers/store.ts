@@ -4,7 +4,7 @@ import FetchedDataReducer from 'reducers/slices/FetchedDataReducer';
 
 const store = configureStore({
   reducer: {
-    fetchDataOption: FetchedDataReducer,
+    fetchData: FetchedDataReducer,
   },
 });
 

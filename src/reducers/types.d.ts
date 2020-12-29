@@ -1,9 +1,9 @@
 // follow CamelCASE strictly
-
-
-
+import { QuestionMapType, UserInfoType, ContestDataType } from 'types';
 export default interface StateInterface {
-  contestData: string
-  userInfo: string
-  QuestionsMap: string
+  fetchedData: {
+    QuestionsMap: QuestionMapType;
+    contestData: ContestDataType;
+    userInfo: UserInfoType;
+  }
 }

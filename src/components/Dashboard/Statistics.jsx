@@ -15,7 +15,7 @@ import testLogo from "./../../assets/ribbon-logo.svg";
 import Link from "@material-ui/core/Link";
 import getQuestionMap from "../../utils/getQuestionsMap";
 import getContestData from "../../utils/getContestData";
-import { QUESTION_URL } from "./../../API";
+import { QUESTION_URL } from "../../API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "80vw",
     },
     [theme.breakpoints.down("md")]: {
-      maxWidth: "35vw",
+      maxWidth: "60vw",
     },
   },
   content: {
@@ -90,7 +90,7 @@ export const Statistics = React.memo(function ProjectCard() {
   const shadowStyles = useLightTopShadowStyles();
   const classes = useStyles();
   return (
-    <Grid container style={{ padding: "2rem 1rem " }} direction="row" justify="space-around">
+    <Grid container style={{ padding: "2rem 0rem " }} direction="row" justify="space-around">
       <Grid item xs={12} md={6}>
         <Card className={cx(classes.root, shadowStyles.root)}>
           <BrandCardHeader image={userLogo} extra={"Question Stats"} />

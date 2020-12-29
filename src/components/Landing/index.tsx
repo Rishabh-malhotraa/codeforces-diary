@@ -18,7 +18,6 @@ function NextButton() {
 function LandingPage() {
   const [text, setText] = useState<string>("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    console.log(event.target.value);
     setText(event.target.value);
   };
 
