@@ -159,7 +159,7 @@ export default function PersistentDrawerRight() {
       >
         <div className={classes.drawerHeader} />
 
-        <Heatmap />
+        <Heatmap drawerOpen={open} />
         <Grid container>
           <RadarChart />
           {/* <DonughtChart /> */}

@@ -6,5 +6,6 @@ export const USER_RATING = "https://codeforces.com/api/user.rating";
 
 export const USER_INFO = "https://codeforces.com/api/user.info";
 
+export const QUESTION_URL = "https://codeforces.com/problemset/problem";
 
 // params = handles

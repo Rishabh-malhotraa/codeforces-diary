@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import getQuestionMap, { QuestionMapType } from "utils/getQuestionsMap";
 import { Typography, Link, Divider, FormControlLabel, Switch, Grid, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
-
-const QUESTION_URL = "https://codeforces.com/problemset/problem";
+import { QUESTION_URL } from "API";
 
 const prepareData = (questionMap: QuestionMapType) => {
   const dataFiltered = Object.entries(questionMap).filter(([key, value]) => {

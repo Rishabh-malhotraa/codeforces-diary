@@ -4,67 +4,135 @@ import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+// import Divider from "@material-ui/core/Divider";
 import BrandCardHeader from "@mui-treasury/components/cardHeader/brand";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useN03TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n03";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
-import { Grid, ListItem } from "@material-ui/core";
+import { Grid, ListItem, Typography } from "@material-ui/core";
 import userLogo from "./../../assets/wolfram-alpha.svg";
 import testLogo from "./../../assets/ribbon-logo.svg";
+import Link from "@material-ui/core/Link";
+import getQuestionMap from "../../utils/getQuestionsMap";
+import getContestData from "../../utils/getContestData";
+import { QUESTION_URL } from "./../../API";
 
 const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "FAFAFA",
     mixBlendMode: "multiply",
-    maxWidth: "30vw",
+    width: "30vw",
     borderRadius: 20,
   },
   content: {
     padding: 24,
   },
+  listContainer: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    "& .MuiTypography-root": {
+      fontSize: "16px",
+      fontWeight: 500,
+      padding: "4px 0",
+      fontFamily: "monospace",
+    },
+  },
 }));
 
+const prepareData = (QuestionMap) => {
+  const questionData = {
+    QuestionsAttempted: 0,
+    QuestionsSolved: 0,
+    AverageAttempts: 0,
+    bestQuestionByRating: {
+      rating: 0,
+      id: "",
+      url: "",
+    },
+    QuestionsUnsolved: 0,
+  };
+
+  let max = -Infinity;
+  let totalSubmission = 0;
+  for (const [, value] of Object.entries(QuestionMap)) {
+    totalSubmission += value.solved ? value.incorrectSubmissions + 1 : value.incorrectSubmissions;
+    questionData.QuestionsSolved += value.solved ? 1 : 0;
+    if (value.rating > max) {
+      max = value.rating;
+      questionData.bestQuestionByRating = {
+        rating: value.rating,
+        id: value.contestId + "-" + value.index,
+        url: `${QUESTION_URL}/${value.contestId}/${value.index}`,
+      };
+    }
+  }
+  questionData.AverageAttempts = (totalSubmission / questionData.QuestionsSolved).toFixed(2);
+  questionData.QuestionsAttempted = Object.entries(QuestionMap).length;
+  questionData.QuestionsUnsolved = questionData.QuestionsAttempted - questionData.QuestionsSolved;
+  return questionData;
+};
+
 export const Statistics = React.memo(function ProjectCard() {
+  const QuestionData = prepareData(getQuestionMap());
+  const ContestData = getContestData();
+
+  console.log(ContestData);
+  console.log(QuestionData);
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
-  const cardStyles = useStyles();
+  const classes = useStyles();
   return (
     <Grid container style={{ margin: "2rem 0 2rem 0" }} direction="row" justify="space-around">
       <Grid item>
-        <Card className={cx(cardStyles.root, shadowStyles.root)}>
-          <BrandCardHeader
-            // image={"https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png"}
-            image={userLogo}
-            extra={"Question Stats"}
-          />
-          <CardContent className={cardStyles.content}>
-            <TextInfoContent
-              classes={styles}
-              overline={"@rishgod"}
-              body={
-                "A JavaScript library for building user interfaces. Build encapsulated components that manage their own state, then compose them to make complex UIs."
-              }
-            />
-            <div>rishabh</div>
+        <Card className={cx(classes.root, shadowStyles.root)}>
+          <BrandCardHeader image={userLogo} extra={"Question Stats"} />
+          <CardContent className={classes.content}>
+            <TextInfoContent classes={styles} overline={"@rishgod"} />
+            <div className={classes.listContainer}>
+              <Typography>Number of Questions Attempted</Typography>
+              <Typography>{QuestionData.QuestionsAttempted}</Typography>
+            </div>
+            <div className={classes.listContainer}>
+              <Typography>Number of Questions Solved</Typography>
+              <Typography>{QuestionData.QuestionsSolved}</Typography>
+            </div>
+            <div className={classes.listContainer}>
+              <Typography>Number of Unsolved Solved</Typography>
+              <Typography>{QuestionData.QuestionsUnsolved}</Typography>
+            </div>
+            <div className={classes.listContainer}>
+              <Typography>Average Attempts to be AC </Typography>
+              <Typography>{QuestionData.AverageAttempts}</Typography>
+            </div>
+            <div className={classes.listContainer}>
+              <Typography>Hardest Question Solved</Typography>
+              <Typography>
+                <Link href={QuestionData.bestQuestionByRating.url} target="_blank">
+                  {QuestionData.bestQuestionByRating.id} {`(${QuestionData.bestQuestionByRating.rating})`}
+                </Link>
+              </Typography>
+            </div>
           </CardContent>
         </Card>
       </Grid>
       <Grid item>
-        <Card className={cx(cardStyles.root, shadowStyles.root)}>
+        <Card className={cx(classes.root, shadowStyles.root)}>
           <BrandCardHeader
             // image={"https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png"}
             image={testLogo}
             extra={"Contest Stats"}
           />
-          <CardContent className={cardStyles.content}>
-            <TextInfoContent
-              classes={styles}
-              overline={"@rishgod"}
-              body={
-                "A JavaScript library for building user interfaces. Build encapsulated components that manage their own state, then compose them to make complex UIs."
-              }
-            />
-            <div>rishabh</div>
+          <CardContent className={classes.content}>
+            <TextInfoContent classes={styles} overline={"@rishgod"} />
+            {Object.entries(ContestData).map(([key, value]) => {
+              return (
+                <div key={key} className={classes.listContainer}>
+                  <Typography>{key}</Typography>
+                  <Typography>{value}</Typography>
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
       </Grid>

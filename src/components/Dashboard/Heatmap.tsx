@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "space-between",
     },
     containerHeatmap: {
-      // width: "70vw",
+      margin: "auto",
       padding: "1rem 3rem 1rem 3rem",
     },
     dropdown: {
@@ -101,7 +101,7 @@ const getYearDate = (year: number): Record<string, Date> => {
   return dateObject;
 };
 
-const Heatmap = () => {
+const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
   const classes = useStyles();
   const { QuestionMap, yearList } = prepareData();
   const [year, setYear] = React.useState(new Date().getFullYear());
@@ -114,7 +114,7 @@ const Heatmap = () => {
   // ReactTooltip.rebuild() after you fetch the data to rebind the tooltips!
   React.useEffect(() => {
     ReactTooltip.rebuild();
-  }, [year]);
+  }, [year, drawerOpen]);
 
   // getting the start and end date for the selected year
   const Dates = getYearDate(year);

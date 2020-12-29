@@ -20,8 +20,7 @@ import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutline
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { red, green } from "@material-ui/core/colors";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-
-const QUESTION_URL = "https://codeforces.com/problemset/problem";
+import { QUESTION_URL } from "API";
 interface AppProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

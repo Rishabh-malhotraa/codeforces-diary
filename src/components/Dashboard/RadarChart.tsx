@@ -35,6 +35,32 @@ export const prepareData = (questionMap: QuestionMapType) => {
   return { Attempts, total };
 };
 
+const prepareDataII = (QuestionMap: QuestionMapType) => {
+  const questionData = {
+    QuestionsAttempted: 0,
+    QuestionsSolved: 0,
+    AverageAttempts: 0,
+    bestQuestionByRating: {
+      rating: 0,
+      id: "",
+    },
+  };
+
+  let max = -Infinity;
+  let totalSubmission = 0;
+  for (const [key, value] of Object.entries(QuestionMap)) {
+    totalSubmission += value.solved ? value.incorrectSubmissions + 1 : value.incorrectSubmissions;
+    questionData.QuestionsSolved += value.solved ? 1 : 0;
+    if (value.rating > max) {
+      max = value.rating;
+      questionData.bestQuestionByRating = { rating: value.rating, id: value.contestId + "-" + value.index };
+    }
+  }
+  questionData.AverageAttempts = totalSubmission / questionData.QuestionsSolved;
+  questionData.QuestionsAttempted = Object.entries(QuestionMap).length;
+  return questionData;
+};
+
 const MyResponsiveRadar = () => {
   const questionMap = getQuestionsMap();
   const { Attempts, total } = prepareData(questionMap);
