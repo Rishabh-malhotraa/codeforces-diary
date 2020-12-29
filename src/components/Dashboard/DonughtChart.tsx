@@ -1,5 +1,5 @@
 import React from "react";
-import { VictoryChart, VictoryBar, VictoryTheme, VictoryPie, VictoryTooltip, VictoryLabel } from "victory";
+import { VictoryPie, VictoryTooltip } from "victory";
 import { Grid, Typography } from "@material-ui/core";
 import getQuestionMap, { QuestionMapType } from "utils/getQuestionsMap";
 

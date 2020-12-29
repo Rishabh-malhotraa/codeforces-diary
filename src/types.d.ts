@@ -67,11 +67,13 @@ type yearListType = {
   value: number;
   label: string;
 }
+
 type QuestionMapDateType = {
   date: Date;
   questions: SubmissionType[];
 }
 
+// adding two extra properties to the SubmissionType for ease of use while calculating things with HashMap
 type QuestionMapType = Record<string, SubmissionType & { solved: boolean; incorrectSubmissions: number }>
 
 

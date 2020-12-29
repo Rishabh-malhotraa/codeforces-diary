@@ -16,10 +16,6 @@ export type QuestionMapType = Record<string, typeof problem & { solved: boolean;
  * If the verdit is false then two cases has it been solved before or it hasnt been solved before
  */
 const getQuestionsMap = () => {
-  // unique questions
-  let count = 0;
-
-
   let hashMap: QuestionMapType = {};
   questionList.forEach((attempt: SubmissionType, idx: number) => {
     const key = attempt.problem.contestId + "-" + attempt.problem.index;

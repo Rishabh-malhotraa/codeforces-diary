@@ -1,5 +1,4 @@
 
-
 export type QuestionListType = typeof QuestionListWrapper.result[0];
 
 export const QuestionListWrapper = {

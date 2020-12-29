@@ -9,7 +9,7 @@ import BrandCardHeader from "@mui-treasury/components/cardHeader/brand";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useN03TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n03";
 import { useLightTopShadowStyles } from "@mui-treasury/styles/shadow/lightTop";
-import { Grid, ListItem, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import userLogo from "./../../assets/wolfram-alpha.svg";
 import testLogo from "./../../assets/ribbon-logo.svg";
 import Link from "@material-ui/core/Link";

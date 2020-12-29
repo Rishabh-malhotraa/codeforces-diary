@@ -3,9 +3,6 @@ import contestListWrapper from "../response/user_rating";
 const contestList = contestListWrapper.result;
 
 const getContestData = () => {
-  const contest = contestList.map((element) => {
-    return element.contestName;
-  });
   let maxRatingChange = 0;
   let minRatingChange = 0;
   let bestRank = Infinity;
