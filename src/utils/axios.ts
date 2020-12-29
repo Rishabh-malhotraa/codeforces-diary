@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { USER_INFO } from 'API';
 import { QuestionListType, } from 'response/user_questions';
-
+import { SubmissionType } from 'types'
 
 const handle = 'rishgod';
 

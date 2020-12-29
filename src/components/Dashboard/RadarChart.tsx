@@ -35,32 +35,6 @@ export const prepareData = (questionMap: QuestionMapType) => {
   return { Attempts, total };
 };
 
-const prepareDataII = (QuestionMap: QuestionMapType) => {
-  const questionData = {
-    QuestionsAttempted: 0,
-    QuestionsSolved: 0,
-    AverageAttempts: 0,
-    bestQuestionByRating: {
-      rating: 0,
-      id: "",
-    },
-  };
-
-  let max = -Infinity;
-  let totalSubmission = 0;
-  for (const [key, value] of Object.entries(QuestionMap)) {
-    totalSubmission += value.solved ? value.incorrectSubmissions + 1 : value.incorrectSubmissions;
-    questionData.QuestionsSolved += value.solved ? 1 : 0;
-    if (value.rating > max) {
-      max = value.rating;
-      questionData.bestQuestionByRating = { rating: value.rating, id: value.contestId + "-" + value.index };
-    }
-  }
-  questionData.AverageAttempts = totalSubmission / questionData.QuestionsSolved;
-  questionData.QuestionsAttempted = Object.entries(QuestionMap).length;
-  return questionData;
-};
-
 const MyResponsiveRadar = () => {
   const questionMap = getQuestionsMap();
   const { Attempts, total } = prepareData(questionMap);
@@ -79,14 +53,14 @@ const MyResponsiveRadar = () => {
       <Grid
         item
         container
-        style={{ paddingTop: "2rem" }}
         direction="column"
         xs={12}
         md={6}
         lg={4}
         justify="space-around"
+        style={{ position: "relative", paddingTop: "1rem" }}
       >
-        <Grid item style={{ textAlign: "end" }}>
+        <Grid item style={{ position: "absolute", top: "0px", right: "0px" }}>
           <FormControlLabel
             control={
               <GreenSwitch
@@ -102,7 +76,7 @@ const MyResponsiveRadar = () => {
             label="Relative Max"
           />
         </Grid>
-        <Grid item style={{ width: "100%", height: "20vw" }}>
+        <Grid item style={{ width: "100%", height: "20vw", zIndex: -1 }}>
           <ResponsiveRadar
             data={data}
             keys={["value"]}

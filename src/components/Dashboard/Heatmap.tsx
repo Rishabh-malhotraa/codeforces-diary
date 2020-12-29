@@ -9,7 +9,7 @@ import getDate from "utils/getDate";
 import Select from "react-select";
 import dateFormat from "dateformat";
 import Dialog from "./Dialog";
-import { QuestionListType, QuestionMapType, yearListType } from "types";
+import { SubmissionType, yearListType, QuestionMapDateType } from "types";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,8 +53,8 @@ const prepareData = () => {
 
   //  date sorted Question List
 
-  let QuestionMap: Record<string, QuestionMapType> = {};
-  QuestionList.forEach((attempt: QuestionListType) => {
+  let QuestionMap: Record<string, QuestionMapDateType> = {};
+  QuestionList.forEach((attempt: SubmissionType) => {
     const date = getDate(attempt.creationTimeSeconds);
     // yyyy-mm-dd format
     const dateKey = date.toISOString().slice(0, 10);
@@ -77,8 +77,8 @@ const prepareData = () => {
  * @param QuestionMap Hash Mop containing all question with key as dates
  * @param year current year to filter the data to be fed into the heatmap
  */
-const filterData = (QuestionMap: Record<string, QuestionMapType>, year: number) => {
-  const QuestionListYear: QuestionMapType[] = [];
+const filterData = (QuestionMap: Record<string, QuestionMapDateType>, year: number) => {
+  const QuestionListYear: QuestionMapDateType[] = [];
 
   for (const [, value] of Object.entries(QuestionMap)) {
     const { date } = value;
@@ -104,10 +104,11 @@ const getYearDate = (year: number): Record<string, Date> => {
 const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
   const classes = useStyles();
   const { QuestionMap, yearList } = prepareData();
+  console.log(typeof QuestionMap);
   const [year, setYear] = React.useState(new Date().getFullYear());
   const [open, setOpen] = React.useState(false);
   const QuestionListYear = filterData(QuestionMap, year);
-  const [dialogQuestionList, setDialogQuestionList] = React.useState<QuestionMapType>(
+  const [dialogQuestionList, setDialogQuestionList] = React.useState<QuestionMapDateType>(
     QuestionListYear[QuestionListYear.length - 1]
   );
 
@@ -143,14 +144,14 @@ const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
             startDate={Dates.startDate}
             endDate={Dates.endDate}
             values={QuestionListYear}
-            classForValue={(value: QuestionMapType) => {
+            classForValue={(value: QuestionMapDateType) => {
               if (!value) {
                 return "color-empty";
               }
               const count = Math.ceil(value.questions.length / 4);
               return `color-github-${count}`;
             }}
-            tooltipDataAttrs={(value: QuestionMapType) => {
+            tooltipDataAttrs={(value: QuestionMapDateType) => {
               if (value && value?.date && value?.questions) {
                 return {
                   "data-tip": `
@@ -159,7 +160,7 @@ const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
                 };
               } else return {};
             }}
-            onClick={(value: QuestionMapType) => {
+            onClick={(value: QuestionMapDateType) => {
               if (value && value.questions) {
                 setOpen(true);
                 setDialogQuestionList(value);

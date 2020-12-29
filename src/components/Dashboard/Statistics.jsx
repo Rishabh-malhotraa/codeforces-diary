@@ -17,12 +17,19 @@ import getQuestionMap from "../../utils/getQuestionsMap";
 import getContestData from "../../utils/getContestData";
 import { QUESTION_URL } from "./../../API";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "FAFAFA",
+    margin: "auto",
+    // backgroundColor: "#FAFAFA",
     mixBlendMode: "multiply",
-    width: "30vw",
     borderRadius: 20,
+    maxWidth: "30vw",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "80vw",
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "35vw",
+    },
   },
   content: {
     padding: 24,
@@ -83,8 +90,8 @@ export const Statistics = React.memo(function ProjectCard() {
   const shadowStyles = useLightTopShadowStyles();
   const classes = useStyles();
   return (
-    <Grid container style={{ margin: "2rem 0 2rem 0" }} direction="row" justify="space-around">
-      <Grid item>
+    <Grid container style={{ padding: "2rem 1rem " }} direction="row" justify="space-around">
+      <Grid item xs={12} md={6}>
         <Card className={cx(classes.root, shadowStyles.root)}>
           <BrandCardHeader image={userLogo} extra={"Question Stats"} />
           <CardContent className={classes.content}>
@@ -116,7 +123,7 @@ export const Statistics = React.memo(function ProjectCard() {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item>
+      <Grid item xs={12} md={6}>
         <Card className={cx(classes.root, shadowStyles.root)}>
           <BrandCardHeader
             // image={"https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png"}

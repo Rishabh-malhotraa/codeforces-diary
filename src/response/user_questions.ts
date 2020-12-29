@@ -1,18 +1,5 @@
 
 
-interface result {
-  id: number;
-  constedId: number;
-  problem: {
-    index: string; // level
-    name: string;
-    rating: string;
-    tags: string;
-    programmingLanguage: string
-    verdict: string;
-  }
-}
-
 export type QuestionListType = typeof QuestionListWrapper.result[0];
 
 export const QuestionListWrapper = {

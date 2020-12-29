@@ -1,7 +1,8 @@
 import {
   QuestionListWrapper,
-  QuestionListType,
 } from "response/user_questions";
+
+import { SubmissionType } from 'types'
 
 const questionList = QuestionListWrapper.result;
 // Merging types of extacted problem from the response and the addition additonal features to it
@@ -17,8 +18,10 @@ export type QuestionMapType = Record<string, typeof problem & { solved: boolean;
 const getQuestionsMap = () => {
   // unique questions
   let count = 0;
+
+
   let hashMap: QuestionMapType = {};
-  questionList.forEach((attempt: QuestionListType, idx: number) => {
+  questionList.forEach((attempt: SubmissionType, idx: number) => {
     const key = attempt.problem.contestId + "-" + attempt.problem.index;
     if (attempt.verdict === "OK") {
       let value = 0;

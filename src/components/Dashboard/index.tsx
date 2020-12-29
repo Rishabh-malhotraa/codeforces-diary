@@ -21,9 +21,10 @@ import BarChartTwoToneIcon from "@material-ui/icons/BarChartTwoTone";
 import CodeforcesSVG from "assets/Codeforces_logo.svg";
 import Heatmap from "./Heatmap";
 import RadarChart from "./RadarChart";
-import DonughtChart from "./DonughtChart";
 import UnsolvedQuestionsList from "./UnsolvedQuestionsList";
 import Statistics from "./Statistics";
+import DonughtChart from "./DonughtChart";
+import BubbleChart from "./BubbleChart";
 
 const drawerWidth = 300;
 
@@ -158,13 +159,13 @@ export default function PersistentDrawerRight() {
         })}
       >
         <div className={classes.drawerHeader} />
-
         <Heatmap drawerOpen={open} />
-        <Grid container>
+        <Grid container direction="row" justify="space-evenly" style={{ margin: "1rem 0 3rem 0" }}>
           <RadarChart />
-          {/* <DonughtChart /> */}
+          <DonughtChart />
         </Grid>
-        <Typography paragraph>
+        {/* <BubbleChart /> */}
+        {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
           ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
@@ -174,7 +175,7 @@ export default function PersistentDrawerRight() {
           commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue
           eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
           donec massa sapien faucibus et molestie ac.
-        </Typography>
+        </Typography> */}
         <Statistics />
         <UnsolvedQuestionsList />
       </div>

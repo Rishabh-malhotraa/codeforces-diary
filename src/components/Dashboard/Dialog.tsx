@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
-import { QuestionMapType, QuestionListType } from "types";
+import { QuestionMapDateType, SubmissionType } from "types";
 import dateFormat from "dateformat";
 import { relativeDate } from "utils/getDate";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -24,7 +24,7 @@ import { QUESTION_URL } from "API";
 interface AppProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  dialogData: QuestionMapType;
+  dialogData: QuestionMapDateType;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const prepareURL = (question: QuestionListType) => {
+const prepareURL = (question: SubmissionType) => {
   const url = `${QUESTION_URL}/${question.problem.contestId}/${question.problem.index}`;
   return url;
 };

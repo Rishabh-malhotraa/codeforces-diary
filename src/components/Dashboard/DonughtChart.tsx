@@ -1,200 +1,137 @@
-//@ts-nocheck
 import React from "react";
-import { ResponsivePie } from "@nivo/pie";
-import Grid from "@material-ui/core/Grid";
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
+import { VictoryChart, VictoryBar, VictoryTheme, VictoryPie, VictoryTooltip, VictoryLabel } from "victory";
+import { Grid, Typography } from "@material-ui/core";
+import getQuestionMap, { QuestionMapType } from "utils/getQuestionsMap";
 
-const dataExample = [
-  {
-    id: "php",
-    label: "php",
-    value: 287,
-    color: "hsl(297, 70%, 50%)",
-  },
-  {
-    id: "haskell",
-    label: "haskell",
-    value: 336,
-    color: "hsl(65, 70%, 50%)",
-  },
-  {
-    id: "lisp",
-    label: "lisp",
-    value: 182,
-    color: "hsl(135, 70%, 50%)",
-  },
-  {
-    id: "sass",
-    label: "sass",
-    value: 50,
-    color: "hsl(43, 70%, 50%)",
-  },
-  {
-    id: "go",
-    label: "go",
-    value: 247,
-    color: "hsl(199, 70%, 50%)",
-  },
-];
+const prepareData = (questionMap: QuestionMapType) => {
+  let Ratings: Record<string, number> = {};
+  let Levels: Record<string, number> = {};
+  for (const [, question] of Object.entries(questionMap)) {
+    const ratingKey = question.rating;
+    const levelKey = question.index.slice(0, 1);
+    Ratings[ratingKey] = Ratings[ratingKey] ? Ratings[ratingKey] + 1 : 1;
+    Levels[levelKey] = Levels[levelKey] ? Levels[levelKey] + 1 : 1;
+  }
 
-const MyResponsivePie = () => (
-  <Grid item xs={4} style={{ width: "100%", height: "30vw" }}>
-    <ResponsivePie
-      data={dataExample}
-      margin={{
-        top: 40,
-        right: 80,
-        bottom: 80,
-        left: 80,
-      }}
-      innerRadius={0.5}
-      padAngle={0.7}
-      cornerRadius={3}
-      colors={{
-        scheme: "nivo",
-      }}
-      borderWidth={1}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", 0.2]],
-      }}
-      isInteractive={true}
-      radialLabelsSkipAngle={10}
-      radialLabelsTextXOffset={6}
-      radialLabelsTextColor="#333333"
-      radialLabelsLinkOffset={0}
-      radialLabelsLinkDiagonalLength={16}
-      radialLabelsLinkHorizontalLength={24}
-      radialLabelsLinkStrokeWidth={1}
-      tooltip={function (e) {
-        var t = e.datum;
-        return o.a.createElement(
-          s,
-          { style: { color: t.color } },
-          o.a.createElement(u, null, "id"),
-          o.a.createElement(d, null, t.id),
-          o.a.createElement(u, null, "value"),
-          o.a.createElement(d, null, t.value),
-          o.a.createElement(u, null, "formattedValue"),
-          o.a.createElement(d, null, t.formattedValue),
-          o.a.createElement(u, null, "color"),
-          o.a.createElement(d, null, t.color)
-        );
-      }}
-      radialLabelsLinkColor={{
-        from: "color",
-      }}
-      slicesLabelsSkipAngle={10}
-      slicesLabelsTextColor="#333333"
-      animate={true}
-      motionStiffness={90}
-      motionDamping={15}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      fill={[
-        {
-          match: {
-            id: "ruby",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "c",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "go",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "python",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "scala",
-          },
-          id: "lines",
-        },
-        {
-          match: {
-            id: "lisp",
-          },
-          id: "lines",
-        },
-        {
-          match: {
-            id: "elixir",
-          },
-          id: "lines",
-        },
-        {
-          match: {
-            id: "javascript",
-          },
-          id: "lines",
-        },
-      ]}
-      legends={[
-        {
-          anchor: "bottom",
-          direction: "row",
-          translateY: 56,
-          itemWidth: 100,
-          itemHeight: 18,
-          itemTextColor: "#999",
-          symbolSize: 18,
-          symbolShape: "circle",
-          effects: [
+  const total = Object.entries(questionMap).length;
+  const RatingsList = Object.entries(Ratings).map(([key, value]) => {
+    return {
+      x: key,
+      y: value,
+      label: `Rating: ${key}
+      
+      ${value}/ ${total} =  ${Math.ceil((value * 100) / total)}% `,
+    };
+  });
+
+  const LevelsList = Object.entries(Levels).map(([key, value]) => {
+    return {
+      x: key,
+      y: value,
+      label: `Type: ${key}
+      
+      ${value}/ ${total} =  ${Math.ceil((value * 100) / total)}% `,
+    };
+  });
+
+  return { RatingsList, LevelsList };
+};
+
+//@ts-ignore
+const CustomLabel = (props) => {
+  return (
+    <g>
+      <VictoryTooltip
+        {...props}
+        x={200}
+        y={287.5}
+        style={{ fontSize: "18px", fontWeight: "bold" }}
+        orientation="top"
+        pointerLength={0}
+        cornerRadius={87.5}
+        flyoutWidth={175}
+        flyoutHeight={175}
+        flyoutStyle={{ fill: "whitesmoke", strokeWidth: "2", stroke: "greysmoke" }}
+      />
+    </g>
+  );
+};
+
+CustomLabel.defaultEvents = VictoryTooltip.defaultEvents;
+
+const DonughtChart: React.FC<{ data: any[] }> = ({ data }) => {
+  const [value, setValue] = React.useState(data.slice(0, 1));
+
+  React.useEffect(() => {
+    setValue(data); // Setting the data that we want to display
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <>
+      <div style={{ height: "20vw" }}>
+        <VictoryPie
+          animate={{ easing: "exp" }}
+          labelComponent={<CustomLabel />}
+          // padAngle={({ datum }) => datum.y}
+          innerRadius={100}
+          labelRadius={120}
+          data={value}
+          colorScale={["#F94144", "#F3722C", "#F8961E", "#F9C74F", "#90BE6D", "#43AA8B", "#577590"]}
+          events={[
             {
-              on: "hover",
-              style: {
-                itemTextColor: "#000",
+              target: "data",
+              eventHandlers: {
+                onMouseOver: () => {
+                  return [
+                    {
+                      target: "data",
+                      mutation: () => ({ style: { fill: "black", width: 30 } }),
+                    },
+                    {
+                      target: "labels",
+                      mutation: () => ({ active: true }),
+                    },
+                  ];
+                },
+                onMouseOut: () => {
+                  return [
+                    {
+                      target: "data",
+                      mutation: () => {},
+                    },
+                    {
+                      target: "labels",
+                      mutation: () => ({ active: false }),
+                    },
+                  ];
+                },
               },
             },
-          ],
-        },
-      ]}
-    />
-  </Grid>
-);
+          ]}
+        />
+      </div>
+    </>
+  );
+};
 
-export default MyResponsivePie;
+const renderDonughtCharts = () => {
+  const { RatingsList, LevelsList } = prepareData(getQuestionMap());
+  return (
+    <>
+      <Grid item container justify="space-around" xs={12} md={6} lg={4} style={{ paddingTop: "1rem" }}>
+        <DonughtChart data={RatingsList} />
+        <Typography variant="h6" align="center">
+          Questions Rating - Pie Chart
+        </Typography>
+      </Grid>
+      <Grid item container justify="space-around" xs={12} md={6} lg={4} style={{ paddingTop: "1rem" }}>
+        <DonughtChart data={LevelsList} />
+        <Typography variant="h6" align="center">
+          Questions Level - Pie Chart
+        </Typography>
+      </Grid>
+    </>
+  );
+};
 
-{
-  /* <Pie
-{...commonProperties}
-innerRadius={0.8}
-enableSliceLabels={false}
-radialLabel={d => `${d.id} (${d.formattedValue})`}
-layers={['slices', 'sliceLabels', 'radialLabels', 'legends', CenteredMetric]}
-/> */
-}
+export default renderDonughtCharts;
