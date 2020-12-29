@@ -21,6 +21,9 @@ import BarChartTwoToneIcon from "@material-ui/icons/BarChartTwoTone";
 import CodeforcesSVG from "assets/Codeforces_logo.svg";
 import Heatmap from "./Heatmap";
 import RadarChart from "./RadarChart";
+import DonughtChart from "./DonughtChart";
+import UnsolvedQuestionsList from "./UnsolvedQuestionsList";
+import Statistics from "./Statistics";
 
 const drawerWidth = 300;
 
@@ -75,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     contentShift: {
       transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
+        easing: theme.transitions.easing.easeIn,
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginRight: 0,
@@ -155,9 +158,12 @@ export default function PersistentDrawerRight() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Heatmap />
 
-        <RadarChart />
+        <Heatmap />
+        <Grid container>
+          <RadarChart />
+          {/* <DonughtChart /> */}
+        </Grid>
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
@@ -169,6 +175,8 @@ export default function PersistentDrawerRight() {
           eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
           donec massa sapien faucibus et molestie ac.
         </Typography>
+        <Statistics />
+        <UnsolvedQuestionsList />
       </div>
       <Drawer
         className={classes.drawer}

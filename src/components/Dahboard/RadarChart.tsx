@@ -24,12 +24,12 @@ export const prepareData = (questionMap: QuestionMapType) => {
   // iam getting so good at typescript lol
   let Attempts: Record<string, number> = {};
   let total = 0;
-  for (const [key, value] of Object.entries(questionMap)) {
+  for (const [, value] of Object.entries(questionMap)) {
     let attemptsCount = value.incorrectSubmissions + 1;
     if (value.solved) {
-      total += attemptsCount;
+      total += 1;
       let attemptsKey = attemptsCount >= 5 ? 5 : attemptsCount;
-      Attempts[attemptsKey] = Attempts[attemptsKey] ? Attempts[attemptsKey] + attemptsCount : attemptsCount;
+      Attempts[attemptsKey] = Attempts[attemptsKey] ? Attempts[attemptsKey] + 1 : 1;
     }
   }
   return { Attempts, total };
@@ -50,7 +50,16 @@ const MyResponsiveRadar = () => {
 
   return (
     <>
-      <Grid container style={{ paddingTop: "2rem" }} direction="column" xs={12} md={6} lg={4}>
+      <Grid
+        item
+        container
+        style={{ paddingTop: "2rem" }}
+        direction="column"
+        xs={12}
+        md={6}
+        lg={4}
+        justify="space-around"
+      >
         <Grid item style={{ textAlign: "end" }}>
           <FormControlLabel
             control={

@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import LandingPage from "./components/Landing/index";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import SideBar from "./components/SideBar";
+import Dashboard from "./components/PieVictory";
+import SideBar from "./components/Dashboard";
 
 function App() {
   return (

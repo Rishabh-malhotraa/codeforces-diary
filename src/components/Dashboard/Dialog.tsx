@@ -1,6 +1,5 @@
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
@@ -15,13 +14,12 @@ import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
 import { QuestionMapType, QuestionListType } from "types";
 import dateFormat from "dateformat";
-import getDate, { relativeDate } from "utils/getDate";
+import { relativeDate } from "utils/getDate";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutlineRounded";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { red, green } from "@material-ui/core/colors";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import { QuestionAnswerSharp } from "@material-ui/icons";
 
 const QUESTION_URL = "https://codeforces.com/problemset/problem";
 interface AppProps {
@@ -70,9 +68,9 @@ const FullScreenDialog: React.FC<AppProps> = ({ open, setOpen, dialogData }) => 
 
   const { date, questions } = dialogData;
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
