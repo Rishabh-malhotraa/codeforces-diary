@@ -36,7 +36,7 @@ type SubmissionType = {
   "memoryConsumedBytes": number
 }
 
-type ContestDataType = {
+type ContestListType = {
   "contestId": number,
   "contestName": string,
   "handle": string,
@@ -76,6 +76,16 @@ type QuestionMapDateType = {
   questions: SubmissionType[];
 }
 
+type ContestData = {
+  "Contest Given": number;
+  "Best Rank": number;
+  "Worst Rank": number;
+  "Best Gain in Rating": number;
+  "Worst Gain in Rating": number;
+}
+
+
+
 interface QuestionMapWrapperType extends Problem {
   solved: boolean;
   incorrectSubmissions: number
@@ -85,4 +95,4 @@ interface QuestionMapWrapperType extends Problem {
 type QuestionMapType = Record<string, QuestionMapWrapperType>;
 
 
-export { ContestDataType, SubmissionType, QuestionMapType, QuestionMapDateType, UserInfoType, yearListType }
+export { ContestListType, SubmissionType, QuestionMapType, QuestionMapDateType, UserInfoType, yearListType }

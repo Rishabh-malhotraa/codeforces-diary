@@ -17,7 +17,6 @@ const Questions = QuestionListWrapper.result;
 const getQuestionsMap = (questionList = Questions): QuestionMapType => {
   let QuestionMap: QuestionMapType = {};
   questionList.forEach((attempt: SubmissionType, idx: number) => {
-    console.log(attempt);
     const key = attempt.problem.contestId + "-" + attempt.problem.index;
     if (attempt.verdict === "OK") {
       let value = 0;
@@ -42,6 +41,7 @@ const getQuestionsMap = (questionList = Questions): QuestionMapType => {
     }
   });
 
+  console.log(QuestionMap);
   return QuestionMap;
 };
 

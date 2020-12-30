@@ -7,7 +7,8 @@ import { Typography, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { QuestionMapType } from "types";
 import { useSelector } from "react-redux";
-import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
+import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
+import StateInterface from "reducers/types";
 
 const GreenSwitch = withStyles({
   switchBase: {
@@ -38,9 +39,11 @@ export const prepareData = (questionMap: QuestionMapType) => {
 };
 
 const MyResponsiveRadar = () => {
+  //@ts-ignore
   const questionMap = useSelector(selectQuestionMap);
+  console.log(questionMap);
   const { Attempts, total } = prepareData(questionMap);
-  const [toggle, setToggle] = useState<boolean>(true);
+  const [toggle, setToggle] = useState<boolean>(false);
   const data = Object.entries(Attempts).map(([key, value]) => {
     key = key === "1" ? key + " Submission" : key;
     key = key === "5" ? key + "+" : key;
@@ -62,7 +65,7 @@ const MyResponsiveRadar = () => {
         justify="space-around"
         style={{ position: "relative", paddingTop: "1rem" }}
       >
-        <Grid item style={{ position: "absolute", top: "0px", right: "0px" }}>
+        <Grid item style={{ position: "absolute", top: "0px", right: "0px", zIndex: 3 }}>
           <FormControlLabel
             control={
               <GreenSwitch
@@ -78,7 +81,7 @@ const MyResponsiveRadar = () => {
             label="Relative Max"
           />
         </Grid>
-        <Grid item style={{ width: "100%", height: "20vw", zIndex: -1 }}>
+        <Grid item style={{ width: "100%", height: "20vw", zIndex: 2 }}>
           <ResponsiveRadar
             data={data}
             keys={["value"]}

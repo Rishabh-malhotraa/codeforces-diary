@@ -3,7 +3,7 @@ import { VictoryPie, VictoryTooltip } from "victory";
 import { Grid, Typography } from "@material-ui/core";
 import { QuestionMapType } from "./../../types";
 import { useSelector } from "react-redux";
-import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
+import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
 
 const prepareData = (questionMap: QuestionMapType) => {
   let Ratings: Record<string, number> = {};

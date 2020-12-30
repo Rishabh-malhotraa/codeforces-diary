@@ -1,9 +1,11 @@
-// follow CamelCASE strictly
-import { QuestionMapType, UserInfoType, ContestDataType } from 'types';
+import { QuestionMapType, UserInfoType, ContestListType, SubmissionType } from 'types';
 export default interface StateInterface {
-  fetchedData: {
-    QuestionsMap: QuestionMapType;
-    contestData: ContestDataType;
+  // the key used in store.ts and the objectkey used here should match
+  fetchData: {
+    submissionList: SubmissionType[];
+    questionMap: QuestionMapType;
+    contestData: ContestListType[];
     userInfo: UserInfoType;
+    apiFetched: boolean;
   }
 }

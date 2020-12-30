@@ -4,12 +4,13 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import "react-calendar-heatmap/dist/styles.css";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { QuestionListWrapper } from "response/user_questions";
 import getDate from "utils/getDate";
 import Select from "react-select";
 import dateFormat from "dateformat";
 import Dialog from "./Dialog";
 import { SubmissionType, yearListType, QuestionMapDateType } from "types";
+import { useSelector } from "react-redux";
+import { selectSubmissionList } from "reducers/slices/FetchedDataSlice";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 /**
- * QuestionList - is the list of submissions
+ * SubmissionList - is the list of submissions
  * QuestionMap-{} - is an object sorted by some paramater(duplictes handling) eg date and has {date: , quest6ions: ,}
  * yearList - is the list of years to be put in to the select component
  */
@@ -43,11 +44,10 @@ const useStyles = makeStyles((theme: Theme) =>
  * Takes the resposne (all submissions) and returns a hashmap for all the
  *  submission sorted by dates
  */
-const prepareData = () => {
-  const QuestionList = QuestionListWrapper.result;
-  const LastSubmissionYear = getDate(QuestionList[0].creationTimeSeconds).getFullYear();
+const prepareData = (SubmissionList: SubmissionType[]) => {
+  const LastSubmissionYear = getDate(SubmissionList[0].creationTimeSeconds).getFullYear();
   const FirstSubmissionYear = getDate(
-    QuestionList[QuestionList.length - 1].creationTimeSeconds
+    SubmissionList[SubmissionList.length - 1].creationTimeSeconds
   ).getFullYear();
 
   let yearList: yearListType[] = [];
@@ -57,7 +57,7 @@ const prepareData = () => {
   //  date sorted Question List
 
   let QuestionMap: Record<string, QuestionMapDateType> = {};
-  QuestionList.forEach((attempt: SubmissionType) => {
+  SubmissionList.forEach((attempt: SubmissionType) => {
     const date = getDate(attempt.creationTimeSeconds);
     // yyyy-mm-dd format
     const dateKey = date.toISOString().slice(0, 10);
@@ -106,8 +106,9 @@ const getYearDate = (year: number): Record<string, Date> => {
 
 const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
   const classes = useStyles();
-  const { QuestionMap, yearList } = prepareData();
-  const [year, setYear] = React.useState(new Date().getFullYear());
+  const SubmissionList = useSelector(selectSubmissionList);
+  const { QuestionMap, yearList } = prepareData(SubmissionList);
+  const [year, setYear] = React.useState(yearList[yearList.length - 1].value);
   const [open, setOpen] = React.useState(false);
   const QuestionListYear = filterData(QuestionMap, year);
   const [dialogQuestionList, setDialogQuestionList] = React.useState<QuestionMapDateType>(

@@ -13,8 +13,9 @@ import userLogo from "./../../assets/wolfram-alpha.svg";
 import testLogo from "./../../assets/ribbon-logo.svg";
 import Link from "@material-ui/core/Link";
 import { useSelector } from "react-redux";
-import { selectQuestionMap, selectContestData } from "reducers/slices/FetchedDataReducer";
-import { QUESTION_URL } from "../../API";
+import { selectQuestionMap, selectContestData, selectUserInfo } from "reducers/slices/FetchedDataSlice";
+import getContestStats from "../../utils/getContestStats";
+import getQuestionStats from "../../utils/getQuestionStats";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,46 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const prepareData = (QuestionMap) => {
-  const questionData = {
-    QuestionsAttempted: 0,
-    QuestionsSolved: 0,
-    AverageAttempts: 0,
-    bestQuestionByRating: {
-      rating: 0,
-      id: "",
-      url: "",
-    },
-    QuestionsUnsolved: 0,
-  };
-
-  let max = -Infinity;
-  let totalSubmission = 0;
-  for (const [, value] of Object.entries(QuestionMap)) {
-    totalSubmission += value.solved ? value.incorrectSubmissions + 1 : value.incorrectSubmissions;
-    questionData.QuestionsSolved += value.solved ? 1 : 0;
-    if (value.rating > max) {
-      max = value.rating;
-      questionData.bestQuestionByRating = {
-        rating: value.rating,
-        id: value.contestId + "-" + value.index,
-        url: `${QUESTION_URL}/${value.contestId}/${value.index}`,
-      };
-    }
-  }
-  questionData.AverageAttempts = (totalSubmission / questionData.QuestionsSolved).toFixed(2);
-  questionData.QuestionsAttempted = Object.entries(QuestionMap).length;
-  questionData.QuestionsUnsolved = questionData.QuestionsAttempted - questionData.QuestionsSolved;
-  return questionData;
-};
-
 export const Statistics = React.memo(function ProjectCard() {
-  const QuestionData = prepareData(useSelector(selectQuestionMap));
+  const QuestionData = getQuestionStats(useSelector(selectQuestionMap));
+  const ContestData = getContestStats(useSelector(selectContestData));
+  const { handle } = useSelector(selectUserInfo);
 
-  const ContestData = useSelector(selectContestData);
-
-  console.log(ContestData);
-  console.log(QuestionData);
   const styles = useN03TextInfoContentStyles();
   const shadowStyles = useLightTopShadowStyles();
   const classes = useStyles();
@@ -95,7 +61,7 @@ export const Statistics = React.memo(function ProjectCard() {
         <Card className={cx(classes.root, shadowStyles.root)}>
           <BrandCardHeader image={userLogo} extra={"Question Stats"} />
           <CardContent className={classes.content}>
-            <TextInfoContent classes={styles} overline={"@rishgod"} />
+            <TextInfoContent classes={styles} overline={`@${handle}`} />
             <div className={classes.listContainer}>
               <Typography>Number of Questions Attempted</Typography>
               <Typography>{QuestionData.QuestionsAttempted}</Typography>
@@ -125,13 +91,9 @@ export const Statistics = React.memo(function ProjectCard() {
       </Grid>
       <Grid item xs={12} md={6}>
         <Card className={cx(classes.root, shadowStyles.root)}>
-          <BrandCardHeader
-            // image={"https://pngimage.net/wp-content/uploads/2018/06/react-icon-png-7.png"}
-            image={testLogo}
-            extra={"Contest Stats"}
-          />
+          <BrandCardHeader image={testLogo} extra={"Contest Stats"} />
           <CardContent className={classes.content}>
-            <TextInfoContent classes={styles} overline={"@rishgod"} />
+            <TextInfoContent classes={styles} overline={`@${handle}`} />
             {Object.entries(ContestData).map(([key, value]) => {
               return (
                 <div key={key} className={classes.listContainer}>

@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import makeRequest from "utils/axios";
+import makeRequest from "utils/fetchData";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -75,7 +75,10 @@ const NextButton: React.FC<NextButtonProps> = ({ handle, setErrorText, setLoadin
   const handleClick = async () => {
     setLoading(true);
     const response = await makeRequest(handle, dispatch, history);
-    if (response !== undefined) setErrorText(response);
+    if (response !== undefined) {
+      setErrorText(response);
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,18 +87,17 @@ const NextButton: React.FC<NextButtonProps> = ({ handle, setErrorText, setLoadin
     </IconButton>
   );
 };
-const handles = ["erricto", "rishgod"];
+const handles = ["tourist", "rishgod"];
 
 function LandingPage() {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
-  const [handle, setHandle] = useState<string>(handles[Math.floor(Math.random() * handles.length) + 1]);
+  const [handle, setHandle] = useState<string>(handles[Math.floor(Math.random() * handles.length)]);
   const [errorText, setErrorText] = useState({ error: false, comment: "" });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setHandle(event.target.value as string);
   };
 
-  console.log(handle);
   return (
     <>
       <CssBaseLine />

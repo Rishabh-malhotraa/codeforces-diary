@@ -1,6 +1,7 @@
+
 import axios from 'axios';
 import { USER_INFO, USER_CONTEST_DATA, USER_QUESTIONS_LIST } from 'API';
-import { saveQuestionMap, saveContestInfo, saveUserInfo } from 'reducers/slices/FetchedDataReducer'
+import { saveQuestionMap, saveContestInfo, saveUserInfo, saveSubmissionList, saveApiFetched } from 'reducers/slices/FetchedDataSlice'
 import getQuestionMap from 'utils/getQuestionMap'
 
 
@@ -34,20 +35,19 @@ const makeRequest = async (handle: string, dispatch: any, history: any) => {
     .catch((error) => { return error.response.data });
 
 
-  console.log('hey');
-
-  console.log(QuestionsData);
-  console.log();
   if (UserInfo.status === "FAILED" || ContestData.status === "FAILED" || QuestionsData.status === "FAILED") {
-    console.log(UserInfo)
     return ({ error: true, comment: UserInfo.comment })
   }
 
-  console.log(ContestData);
 
+  console.log(UserInfo, ContestData, QuestionsData);
+  dispatch(saveApiFetched(true));
+  dispatch(saveSubmissionList(QuestionsData.data.result));
   dispatch(saveUserInfo({ ...UserInfo.data.result[0] }));
   dispatch(saveContestInfo(ContestData.data.result));
   dispatch(saveQuestionMap(getQuestionMap(QuestionsData.data.result)));
+
+
 
   history.push("/dashboard");
 };

@@ -1,4 +1,4 @@
-export const URL = "https://codeforces.com/api/";
+export const URL = "https://codeforces.com";
 
 export const USER_QUESTIONS_LIST = "https://codeforces.com/api/user.status"
 

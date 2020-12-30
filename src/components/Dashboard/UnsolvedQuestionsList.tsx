@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
+import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
 import { Typography, Link, Divider, FormControlLabel, Switch, Grid, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { QUESTION_URL } from "API";
@@ -64,20 +64,22 @@ const UnsolvedQuestionsList = () => {
         </Grid>
         <Divider />
 
-        <Typography style={{ paddingTop: "1rem" }}>
+        <Grid container style={{ paddingTop: "1rem", display: "flex" }}>
           {questionList.map((question) => {
             return (
-              <Link
-                href={question!.url}
-                target="_blank"
-                key={question!.id}
-                style={{ padding: "0 0.5rem 0 0.5rem" }}
-              >
-                {question!.id}
-              </Link>
+              <Typography style={{ paddingTop: "8px" }} component="span">
+                <Link
+                  href={question!.url}
+                  target="_blank"
+                  key={question!.id}
+                  style={{ padding: "0 0.5rem 0 0.5rem" }}
+                >
+                  {question!.id}
+                </Link>
+              </Typography>
             );
           })}
-        </Typography>
+        </Grid>
       </Grid>
     </div>
   );

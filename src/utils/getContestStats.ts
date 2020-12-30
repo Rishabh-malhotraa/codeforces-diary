@@ -1,8 +1,6 @@
-import contestListWrapper from "../response/user_rating";
+import { ContestListType } from 'types'
 
-const contestList = contestListWrapper.result;
-
-const getContestData = () => {
+const getContestStats = (contestList: ContestListType[]) => {
   let maxRatingChange = 0;
   let minRatingChange = 0;
   let bestRank = Infinity;
@@ -29,4 +27,4 @@ const getContestData = () => {
     "Worst Gain in Rating": minRatingChange,
   };
 };
-export default getContestData;
+export default getContestStats;
