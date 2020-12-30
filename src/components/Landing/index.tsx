@@ -87,7 +87,7 @@ const NextButton: React.FC<NextButtonProps> = ({ handle, setErrorText, setLoadin
     </IconButton>
   );
 };
-const handles = ["tourist", "rishgod"];
+const handles = ["Errichto", "SecondThread"];
 
 function LandingPage() {
   const classes = useStyles();

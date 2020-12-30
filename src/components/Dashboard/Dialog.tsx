@@ -20,7 +20,7 @@ import CheckCircleOutlineRoundedIcon from "@material-ui/icons/CheckCircleOutline
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { red, green } from "@material-ui/core/colors";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import { QUESTION_URL } from "API";
+import { QUESTION_URL, GYM_QUESTION_URL } from "API";
 interface AppProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +42,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const prepareURL = (question: SubmissionType) => {
-  const url = `${QUESTION_URL}/${question.problem.contestId}/${question.problem.index}`;
+  const URL = question.problem.contestId > 10000 ? GYM_QUESTION_URL : QUESTION_URL;
+
+  const url = `${URL}/${question.problem.contestId}/${question.problem.index}`;
   return url;
 };
 

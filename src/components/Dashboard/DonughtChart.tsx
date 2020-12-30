@@ -8,14 +8,19 @@ import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
 const prepareData = (questionMap: QuestionMapType) => {
   let Ratings: Record<string, number> = {};
   let Levels: Record<string, number> = {};
+  let offset = 0;
   for (const [, question] of Object.entries(questionMap)) {
     const ratingKey = question.rating;
+    if (ratingKey === undefined) {
+      offset += 1;
+      continue;
+    }
     const levelKey = question.index.slice(0, 1);
     Ratings[ratingKey] = Ratings[ratingKey] ? Ratings[ratingKey] + 1 : 1;
     Levels[levelKey] = Levels[levelKey] ? Levels[levelKey] + 1 : 1;
   }
 
-  const total = Object.entries(questionMap).length;
+  const total = Object.entries(questionMap).length - offset;
   const RatingsList = Object.entries(Ratings).map(([key, value]) => {
     return {
       x: key,

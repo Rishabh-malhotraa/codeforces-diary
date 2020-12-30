@@ -1,6 +1,8 @@
 {
-  "name": "codeforces-visualizer",
+  "name": "CodeForces-Diary",
   "version": "0.1.0",
+  "author": "Rishabh Malhotra",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
@@ -9,14 +11,12 @@
     "@mui-treasury/styles": "^1.13.1",
     "@nivo/bar": "^0.66.0",
     "@nivo/core": "^0.66.0",
-    "@nivo/pie": "^0.67.0",
     "@nivo/radar": "^0.67.0",
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.4.0",
     "axios": "^0.21.1",
-    "chart.js": "^2.9.4",
     "clsx": "^1.1.1",
     "d3": "^6.3.1",
     "dateformat": "^4.4.1",
@@ -29,7 +29,6 @@
     "react-scripts": "4.0.1",
     "react-select": "^3.1.1",
     "react-tooltip": "^4.2.11",
-    "styled-components": "^5.2.1",
     "typescript": "^4.1.2",
     "victory": "^35.4.3",
     "web-vitals": "^0.2.4"

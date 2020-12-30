@@ -13,7 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Redirect } from "react-router-dom";
-import { selectApiFetched } from "reducers/slices/FetchedDataSlice";
+import { selectApiFetched, selectSubmissionList } from "reducers/slices/FetchedDataSlice";
 import CodeforcesSVG from "assets/Codeforces_logo.svg";
 import { drawerWidth } from "theme";
 import Heatmap from "./Heatmap";
@@ -177,8 +177,9 @@ const Dashboard = () => {
 
 const DashboardWrapper = () => {
   const apiFetched = useSelector(selectApiFetched);
-
-  return <>{apiFetched === false ? <Redirect to="/" /> : <Dashboard />}</>;
+  const SubmissionList = useSelector(selectSubmissionList);
+  console.log(SubmissionList);
+  return <>{apiFetched === false || SubmissionList.length === 0 ? <Redirect to="/" /> : <Dashboard />}</>;
 };
 
 export default DashboardWrapper;

@@ -151,7 +151,7 @@ const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
               if (!value) {
                 return "color-empty";
               }
-              const count = Math.ceil(value.questions.length / 4);
+              const count = Math.min(4, Math.ceil(value.questions.length / 4));
               return `color-github-${count}`;
             }}
             tooltipDataAttrs={(value: QuestionMapDateType) => {

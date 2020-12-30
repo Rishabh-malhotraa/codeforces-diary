@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
 import { Typography, Link, Divider, FormControlLabel, Switch, Grid, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
-import { QUESTION_URL } from "API";
+import { QUESTION_URL, GYM_QUESTION_URL } from "API";
 import { QuestionMapType } from "types";
 
 const prepareData = (questionMap: QuestionMapType) => {
@@ -13,9 +13,12 @@ const prepareData = (questionMap: QuestionMapType) => {
   const data = dataFiltered.map((element) => {
     const key = element[0];
     const value = element[1];
+
+    const URL = (value.contestId > 10000) ? GYM_QUESTION_URL : QUESTION_URL;
+
     return {
       id: key,
-      url: `${QUESTION_URL}/${value.contestId}/${value.index}`,
+      url: `${URL}/${value.contestId}/${value.index}`,
       rating: value.rating,
     };
   });
