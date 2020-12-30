@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import getQuestionMap, { QuestionMapType } from "utils/getQuestionsMap";
+import { useSelector } from "react-redux";
+import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
 import { Typography, Link, Divider, FormControlLabel, Switch, Grid, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { QUESTION_URL } from "API";
+import { QuestionMapType } from "types";
 
 const prepareData = (questionMap: QuestionMapType) => {
   const dataFiltered = Object.entries(questionMap).filter(([key, value]) => {
@@ -35,7 +37,7 @@ const GreenSwitch = withStyles({
 
 const UnsolvedQuestionsList = () => {
   const [toggle, setToggle] = useState<boolean>(false);
-  const questionList = prepareData(getQuestionMap());
+  const questionList = prepareData(useSelector(selectQuestionMap));
   if (toggle) questionList.sort((a, b) => (a.rating > b.rating ? 1 : -1));
 
   return (

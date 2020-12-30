@@ -3,20 +3,23 @@
 
 
 // type-definations for the data fetched from codeforces API
+type Problem = {
+  "contestId": number,
+  "index": string,
+  "name": string,
+  "type": string,
+  "rating": number,
+  "points"?: number | undefined,
+  "tags": string[]
+}
+
+
 type SubmissionType = {
   "id": number,
   "contestId": number,
   "creationTimeSeconds": number,
   "relativeTimeSeconds": number,
-  "problem": {
-    "contestId": number,
-    "index": string,
-    "name": string,
-    "type": string,
-    "rating": number,
-    "points"?: number | undefined,
-    "tags": string[]
-  },
+  "problem": Problem,
   "author": {
     "contestId": number,
     "members": { handle: string }[],
@@ -73,8 +76,13 @@ type QuestionMapDateType = {
   questions: SubmissionType[];
 }
 
+interface QuestionMapWrapperType extends Problem {
+  solved: boolean;
+  incorrectSubmissions: number
+}
+
 // adding two extra properties to the SubmissionType for ease of use while calculating things with HashMap
-type QuestionMapType = Record<string, SubmissionType & { solved: boolean; incorrectSubmissions: number }>
+type QuestionMapType = Record<string, QuestionMapWrapperType>;
 
 
 export { ContestDataType, SubmissionType, QuestionMapType, QuestionMapDateType, UserInfoType, yearListType }

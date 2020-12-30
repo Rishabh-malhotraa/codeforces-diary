@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { ResponsiveRadar } from "@nivo/radar";
-import getQuestionsMap, { QuestionMapType } from "utils/getQuestionsMap";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import { Typography, withStyles } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
+import { QuestionMapType } from "types";
+import { useSelector } from "react-redux";
+import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
 
 const GreenSwitch = withStyles({
   switchBase: {
@@ -36,7 +38,7 @@ export const prepareData = (questionMap: QuestionMapType) => {
 };
 
 const MyResponsiveRadar = () => {
-  const questionMap = getQuestionsMap();
+  const questionMap = useSelector(selectQuestionMap);
   const { Attempts, total } = prepareData(questionMap);
   const [toggle, setToggle] = useState<boolean>(true);
   const data = Object.entries(Attempts).map(([key, value]) => {

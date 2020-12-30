@@ -1,13 +1,11 @@
-import {
-  QuestionListWrapper,
-} from "response/user_questions";
+import { SubmissionType, QuestionMapType } from 'types'
+import { QuestionListWrapper } from 'response/user_questions'
 
-import { SubmissionType } from 'types'
 
-const questionList = QuestionListWrapper.result;
 // Merging types of extacted problem from the response and the addition additonal features to it
-const problem = questionList[0].problem;
-export type QuestionMapType = Record<string, typeof problem & { solved: boolean; incorrectSubmissions: number }>
+const Questions = QuestionListWrapper.result;
+// const problem = questionList[0].problem;
+// export type QuestionMapType = Record<string, typeof problem & { solved: boolean; incorrectSubmissions: number }>
 /**
  * Function to extract the list of questions solved from list of submission(which contains duplicates aswell)
  * @param ()
@@ -15,34 +13,36 @@ export type QuestionMapType = Record<string, typeof problem & { solved: boolean;
  * If the vertict is OK we add the attempt to our hashmap while also persisiting the incorrectSubmission info if any
  * If the verdit is false then two cases has it been solved before or it hasnt been solved before
  */
-const getQuestionsMap = () => {
-  let hashMap: QuestionMapType = {};
+
+const getQuestionsMap = (questionList = Questions): QuestionMapType => {
+  let QuestionMap: QuestionMapType = {};
   questionList.forEach((attempt: SubmissionType, idx: number) => {
+    console.log(attempt);
     const key = attempt.problem.contestId + "-" + attempt.problem.index;
     if (attempt.verdict === "OK") {
       let value = 0;
-      if (hashMap[key] && hashMap[key].incorrectSubmissions)
-        value = hashMap[key].incorrectSubmissions;
-      hashMap[key] = {
+      if (QuestionMap[key] && QuestionMap[key].incorrectSubmissions)
+        value = QuestionMap[key].incorrectSubmissions;
+      QuestionMap[key] = {
         ...attempt.problem,
         solved: true,
         incorrectSubmissions: value,
       };
     } else {
-      if (hashMap[key] === undefined)
-        hashMap[key] = {
+      if (QuestionMap[key] === undefined)
+        QuestionMap[key] = {
           ...attempt.problem,
           solved: false,
           incorrectSubmissions: 1,
         };
       else {
         // question has been solved before
-        hashMap[key].incorrectSubmissions += 1;
+        QuestionMap[key].incorrectSubmissions += 1;
       }
     }
   });
 
-  return hashMap;
+  return QuestionMap;
 };
 
 export default getQuestionsMap

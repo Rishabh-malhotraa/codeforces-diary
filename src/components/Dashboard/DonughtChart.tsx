@@ -1,7 +1,9 @@
 import React from "react";
 import { VictoryPie, VictoryTooltip } from "victory";
 import { Grid, Typography } from "@material-ui/core";
-import getQuestionMap, { QuestionMapType } from "utils/getQuestionsMap";
+import { QuestionMapType } from "./../../types";
+import { useSelector } from "react-redux";
+import { selectQuestionMap } from "reducers/slices/FetchedDataReducer";
 
 const prepareData = (questionMap: QuestionMapType) => {
   let Ratings: Record<string, number> = {};
@@ -114,8 +116,8 @@ const DonughtChart: React.FC<{ data: any[] }> = ({ data }) => {
   );
 };
 
-const renderDonughtCharts = () => {
-  const { RatingsList, LevelsList } = prepareData(getQuestionMap());
+const DonughtChartsWrapper = () => {
+  const { RatingsList, LevelsList } = prepareData(useSelector(selectQuestionMap));
   return (
     <>
       <Grid item container justify="space-around" xs={12} md={6} lg={4} style={{ paddingTop: "1rem" }}>
@@ -134,4 +136,4 @@ const renderDonughtCharts = () => {
   );
 };
 
-export default renderDonughtCharts;
+export default DonughtChartsWrapper;

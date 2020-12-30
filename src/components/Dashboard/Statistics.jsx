@@ -4,7 +4,6 @@ import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-// import Divider from "@material-ui/core/Divider";
 import BrandCardHeader from "@mui-treasury/components/cardHeader/brand";
 import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useN03TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n03";
@@ -13,8 +12,8 @@ import { Grid, Typography } from "@material-ui/core";
 import userLogo from "./../../assets/wolfram-alpha.svg";
 import testLogo from "./../../assets/ribbon-logo.svg";
 import Link from "@material-ui/core/Link";
-import getQuestionMap from "../../utils/getQuestionsMap";
-import getContestData from "../../utils/getContestData";
+import { useSelector } from "react-redux";
+import { selectQuestionMap, selectContestData } from "reducers/slices/FetchedDataReducer";
 import { QUESTION_URL } from "../../API";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,8 +80,9 @@ const prepareData = (QuestionMap) => {
 };
 
 export const Statistics = React.memo(function ProjectCard() {
-  const QuestionData = prepareData(getQuestionMap());
-  const ContestData = getContestData();
+  const QuestionData = prepareData(useSelector(selectQuestionMap));
+
+  const ContestData = useSelector(selectContestData);
 
   console.log(ContestData);
   console.log(QuestionData);

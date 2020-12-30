@@ -14,7 +14,10 @@ import { SubmissionType, yearListType, QuestionMapDateType } from "types";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: "flex",
+      "&:hover": {
+        background: "#fafafa",
+        boxShadow: "20px 20px 60px #d5d5d5,-20px -20px 60px #ffffff",
+      },
     },
     containerForm: {
       display: "flex",
@@ -104,7 +107,6 @@ const getYearDate = (year: number): Record<string, Date> => {
 const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
   const classes = useStyles();
   const { QuestionMap, yearList } = prepareData();
-  console.log(typeof QuestionMap);
   const [year, setYear] = React.useState(new Date().getFullYear());
   const [open, setOpen] = React.useState(false);
   const QuestionListYear = filterData(QuestionMap, year);
@@ -127,7 +129,7 @@ const Heatmap: React.FC<{ drawerOpen: boolean }> = ({ drawerOpen }) => {
 
   return (
     <>
-      <Paper>
+      <Paper className={classes.root}>
         <div className={classes.containerForm}>
           <Typography variant="h6" style={{ padding: "8px" }}>
             Number of Submissions in {year} : {numberOfSubmissions}
