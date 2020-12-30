@@ -23,6 +23,8 @@ import DonughtChart from "./DonughtChart";
 import { useSelector } from "react-redux";
 import SideBar from "./SideBar";
 import UnsolvedQuestionsList from "./UnsolvedQuestionsList";
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 // import BubbleChart from "./BubbleChart";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -96,6 +98,8 @@ const Dashboard = () => {
     setOpen(false);
   };
 
+  const history = useHistory();
+
   return (
     <>
       <div className={classes.root}>
@@ -112,6 +116,17 @@ const Dashboard = () => {
             <Typography variant="h6" noWrap className={classes.title}>
               Codeforces Stats
             </Typography>
+            <Button variant="text" color="primary" onClick={() => history.push("/resources")}>
+              Resources
+            </Button>
+            <Button
+              variant="text"
+              color="primary"
+              style={{ margin: "0rem 1rem" }}
+              onClick={() => history.goBack()}
+            >
+              Home
+            </Button>
             <IconButton
               color="inherit"
               aria-label="open drawer"

@@ -9,7 +9,6 @@ function App() {
       <Router>
         <Route path="/" exact component={LandingPage} />
         <Route path="/dashboard" exact component={SideBar} />
-        <Redirect to="/" />
       </Router>
     </>
   );
