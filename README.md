@@ -16,7 +16,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Rishabh-Malhotra/codeforces-diary">
+  <a href="https://github.com/Rishabh-malhotraa/codeforces-diary">
     <img src="images/logo.svg" alt="Logo" width="256" height="256">
   </a>
 
@@ -26,14 +26,14 @@
   <p align="center">
     Get the list of all questions you attempted on a particular date on codeforces, along with your account stats.
     <br />
-    <a href="https://github.com/Rishabh-Malhotra/codeforces-diary"><strong>Explore the project »</strong></a>
+    <a href="https://github.com/Rishabh-malhotraa/codeforces-diary"><strong>Explore the project »</strong></a>
     <br />
     <br />
     <a href="https://codeforces-diary.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/Rishabh-Malhotra/codeforces-diary/issues">Report Bug</a>
+    <a href="https://github.com/Rishabh-malhotraa/codeforces-diary/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Rishabh-Malhotra/codeforces-diary/issues">Request Feature</a>
+    <a href="https://github.com/Rishabh-malhotraa/codeforces-diary/issues">Request Feature</a>
   </p>
 </p>
 
@@ -155,7 +155,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Rishabh Malhotra - [@CaffeinatedRish](https://twitter.com/CaffeinatedRish) - rmalhotra_be18@thapar.edu
+Rishabh malhotraa - [@CaffeinatedRish](https://twitter.com/CaffeinatedRish) - rmalhotra_be18@thapar.edu
 
 Project Link: [https://github.com/Rishabh-malhotraa/codeforces-diary](https://github.com/Rishabh-malhotraa/codeforces-diary)
 
@@ -173,20 +173,19 @@ Project Link: [https://github.com/Rishabh-malhotraa/codeforces-diary](https://gi
 * [Open Peeps(Illuustrations)](https://blush.design/collections/open-peeps)
 * [SVG Backgrounds](https://www.svgbackgrounds.com/)
   
-
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Rishabh-Malhotra/codeforces-diary.svg?style=for-the-badge
-[contributors-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Rishabh-Malhotra/codeforces-diary.svg?style=for-the-badge
-[forks-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/network/members
-[stars-shield]: https://img.shields.io/github/stars/Rishabh-Malhotra/codeforces-diary.svg?style=for-the-badge
-[stars-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Rishabh-Malhotra/codeforces-diary.svg?style=for-the-badge
-[issues-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/issues
-[license-shield]: https://img.shields.io/github/license/Rishabh-Malhotra/codeforces-diary.svg?style=for-the-badge
-[license-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/blob/main/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
+[contributors-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
+[forks-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/network/members
+[stars-shield]: https://img.shields.io/github/stars/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
+[stars-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
+[issues-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/issues
+[license-shield]: https://img.shields.io/github/license/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
+[license-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/rishabh-malhotra-4536a418b/
+[linkedin-url]: https://www.linkedin.com/in/rishabh-malhotraa-4536a418b/
 <!-- [product-screenshot]: images/codeforces-diary.svg -->
-[product-screenshot]: images/dashboard.png
+[product-screenshot]: images/Dashboard.png
 [product-screenshotII]: images/submission-list.png
