@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       justifyContent: "center",
       paddingTop: "1rem",
-      maxHeight: "70px",
+      maxHeight: "90px",
     },
     footer: {
       width: "100%",
