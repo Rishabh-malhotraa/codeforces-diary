@@ -63,7 +63,8 @@ const MyResponsiveRadar = () => {
         justify="space-around"
         style={{ position: "relative", paddingTop: "1rem" }}
       >
-        <Grid item style={{ position: "absolute", top: "0px", right: "0px", zIndex: 3 }}>
+        {/* this animation for some reason not working on netlify dunno why T-T */}
+        <Grid item style={{ position: "absolute", top: "0px", right: "0px", zIndex: 3, display: "none" }}>
           <FormControlLabel
             control={
               <GreenSwitch
