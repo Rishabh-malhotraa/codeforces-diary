@@ -6,7 +6,11 @@ const getContestStats = (contestList: ContestListType[]) => {
   let bestRank = Infinity;
   let worstRank = 0;
 
-  contestList.forEach((contest) => {
+  contestList.forEach((contest, idx) => {
+    if (idx === 5 && contestList.length > 5) {
+      minRatingChange = Infinity;
+      maxRatingChange = -Infinity;
+    }
     maxRatingChange = Math.max(
       maxRatingChange,
       contest.newRating - contest.oldRating
