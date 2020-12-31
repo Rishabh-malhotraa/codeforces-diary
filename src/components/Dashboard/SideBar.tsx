@@ -69,7 +69,7 @@ const SideBar = () => {
         className={classes.displayImage}
         style={{ border: `6px solid ${colorScheme[userInfo.rank]}` }}
       ></img>
-      <Typography variant="h6" align="center">
+      <Typography variant="h6" align="center" style={{ display: userInfo.firstName ? "block" : "none" }}>
         {`${userInfo.firstName}  ${userInfo.lastName}`}
       </Typography>
       <Typography variant="h6" align="center" color="textSecondary" gutterBottom>
