@@ -14,7 +14,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Redirect } from "react-router-dom";
 import { selectApiFetched, selectSubmissionList } from "reducers/slices/FetchedDataSlice";
-import CodeforcesSVG from "assets/Codeforces_logo.svg";
+import CodeforcesSVG from "assets/codeforces-diary.svg";
 import { drawerWidth } from "theme";
 import Heatmap from "./Heatmap";
 import RadarChart from "./RadarChart";
@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
+    },
+    logoImage: {
+      height: "auto",
+      width: "30%",
     },
     appBar: {
       transition: theme.transitions.create(["margin", "width"], {
@@ -112,10 +116,8 @@ const Dashboard = () => {
           })}
         >
           <Toolbar>
-            <img src={CodeforcesSVG} alt="codeforces_logo"></img>
-            <Typography variant="h6" noWrap className={classes.title}>
-              Codeforces Stats
-            </Typography>
+            <img className={classes.logoImage} src={CodeforcesSVG} alt="codeforces_logo"></img>
+            <Typography variant="h6" noWrap className={classes.title}></Typography>
             <Button variant="text" color="primary" onClick={() => history.push("/resources")}>
               Resources
             </Button>

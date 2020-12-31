@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, IconButton, Typography } from "@material-ui/core";
-import logo from "./../../assets/code-forces.svg";
+// import logo from "./../../assets/code-forces.svg";
+import logo from "./../../assets/codeforces-diary.svg";
 import peeps from "./../../assets/peep-crowd.svg";
 import TextField from "@material-ui/core/TextField";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
