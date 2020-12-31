@@ -18,7 +18,7 @@ const getQuestionStats = (QuestionMap: QuestionMapType) => {
   for (const [, value] of Object.entries(QuestionMap)) {
     totalSubmission += value.solved ? value.incorrectSubmissions + 1 : value.incorrectSubmissions;
     questionData.QuestionsSolved += value.solved ? 1 : 0;
-    if (value.rating > max) {
+    if (value.rating > max && value.solved) {
       max = value.rating;
       questionData.bestQuestionByRating = {
         rating: value.rating,
