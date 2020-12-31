@@ -163,6 +163,7 @@ const Dashboard = () => {
           classes={{
             paper: classes.drawerPaper,
           }}
+          style={{ zIndex: open ? 1 : -1 }}
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
