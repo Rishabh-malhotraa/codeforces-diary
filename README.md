@@ -149,7 +149,7 @@ Refer to this [article](https://medium.com/swlh/guide-to-git-a-practical-approac
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`][license-url] for more information.
 
 ---
 
@@ -157,7 +157,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Rishabh malhotraa - [@CaffeinatedRish](https://twitter.com/CaffeinatedRish) - rmalhotra_be18@thapar.edu
 
-Project Link: [https://github.com/Rishabh-malhotraa/codeforces-diary](https://github.com/Rishabh-malhotraa/codeforces-diary)
+Project Link: [https://codeforces-diary.netlify.app/](https://codeforces-diary.netlify.app/)
 
 ---
 
@@ -183,9 +183,8 @@ Project Link: [https://github.com/Rishabh-malhotraa/codeforces-diary](https://gi
 [issues-shield]: https://img.shields.io/github/issues/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
 [issues-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/issues
 [license-shield]: https://img.shields.io/github/license/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
-[license-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/blob/main/LICENSE.md
+[license-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/rishabh-malhotraa-4536a418b/
-<!-- [product-screenshot]: images/codeforces-diary.svg -->
 [product-screenshot]: images/Dashboard.png
 [product-screenshotII]: images/submission-list.png
