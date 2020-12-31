@@ -66,7 +66,7 @@
 
 <br/>
 
-Dashboard             |  List of Questions(click the cell on the headmap)
+Dashboard             |  List of Questions(click the cell on the heatmap)
 :-------------------------:|:-------------------------:
  [![Product Name Screen Shot][product-screenshot]](https://codeforces-diary.netlify.app/)|[![Product Name Screen Shot][product-screenshotII]](https://codeforces-diary.netlify.app/)  
 
