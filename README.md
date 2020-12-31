@@ -11,7 +11,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0336285f-1f65-4e5d-8ac8-9097210d551d/deploy-status)](https://app.netlify.com/sites/codeforces-diary/deploys)
 
 <!-- PROJECT LOGO -->
 <br />

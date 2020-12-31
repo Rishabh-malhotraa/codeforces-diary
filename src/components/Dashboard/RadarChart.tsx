@@ -8,7 +8,6 @@ import { green } from "@material-ui/core/colors";
 import { QuestionMapType } from "types";
 import { useSelector } from "react-redux";
 import { selectQuestionMap } from "reducers/slices/FetchedDataSlice";
-import StateInterface from "reducers/types";
 
 const GreenSwitch = withStyles({
   switchBase: {
