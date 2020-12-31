@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import makeRequest from "utils/fetchData";
+import ForkMeOnGithub from "./ForkMeOnGithubRibbon";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -101,6 +102,7 @@ function LandingPage() {
 
   return (
     <>
+      <ForkMeOnGithub />
       <CssBaseLine />
       <Grid
         container

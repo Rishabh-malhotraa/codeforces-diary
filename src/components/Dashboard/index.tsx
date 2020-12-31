@@ -118,9 +118,9 @@ const Dashboard = () => {
           <Toolbar>
             <img className={classes.logoImage} src={CodeforcesSVG} alt="codeforces_logo"></img>
             <Typography variant="h6" noWrap className={classes.title}></Typography>
-            <Button variant="text" color="primary" onClick={() => history.push("/resources")}>
+            {/* <Button variant="text" color="primary" onClick={() => history.push("/resources")}>
               Resources
-            </Button>
+            </Button> */}
             <Button
               variant="text"
               color="primary"

@@ -63,7 +63,12 @@
 </details>
 
 ## About The Project
-[![Product Name Screen Shot][product-screenshot]](https://codeforces-diary.netlify.app/)
+
+<br/>
+
+Dashboard             |  List of Questions(click the cell on the headmap)
+:-------------------------:|:-------------------------:
+ [![Product Name Screen Shot][product-screenshot]](https://codeforces-diary.netlify.app/)|[![Product Name Screen Shot][product-screenshotII]](https://codeforces-diary.netlify.app/)  
 
 I though there was not a good way to see at a glance all the questions you atttempted on CodeForces, to see your progress, so thats why i created a tool to do the same.
 
@@ -182,4 +187,6 @@ Project Link: [https://github.com/Rishabh-malhotraa/codeforces-diary](https://gi
 [license-url]: https://github.com/Rishabh-Malhotra/codeforces-diary/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/rishabh-malhotra-4536a418b/
-[product-screenshot]: images/codeforces-diary.svg
+<!-- [product-screenshot]: images/codeforces-diary.svg -->
+[product-screenshot]: images/dashboard.png
+[product-screenshotII]: images/submission-list.png
