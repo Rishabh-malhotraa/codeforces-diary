@@ -1,14 +1,17 @@
 import React from "react";
 import LandingPage from "./components/Landing/index";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import SideBar from "./components/Dashboard";
 
 function App() {
   return (
     <>
       <Router>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/dashboard" exact component={SideBar} />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/dashboard" component={SideBar} />
+        </Switch>
+        <Redirect to="/" />
       </Router>
     </>
   );
