@@ -39,7 +39,6 @@ const getQuestionsMap = (questionList: SubmissionType[]): QuestionMapType => {
     }
   });
 
-  console.log(QuestionMap);
   return QuestionMap;
 };
 

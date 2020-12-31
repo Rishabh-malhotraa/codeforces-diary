@@ -181,7 +181,6 @@ const Dashboard = () => {
 const DashboardWrapper = () => {
   const apiFetched = useSelector(selectApiFetched);
   const SubmissionList = useSelector(selectSubmissionList);
-  console.log(SubmissionList);
   return <>{apiFetched === false || SubmissionList.length === 0 ? <Redirect to="/" /> : <Dashboard />}</>;
 };
 

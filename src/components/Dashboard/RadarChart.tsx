@@ -40,7 +40,6 @@ export const prepareData = (questionMap: QuestionMapType) => {
 const MyResponsiveRadar = () => {
   //@ts-ignore
   const questionMap = useSelector(selectQuestionMap);
-  console.log(questionMap);
   const { Attempts, total } = prepareData(questionMap);
   const [toggle, setToggle] = useState<boolean>(false);
   const data = Object.entries(Attempts).map(([key, value]) => {

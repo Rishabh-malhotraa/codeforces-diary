@@ -40,7 +40,6 @@ const makeRequest = async (handle: string, dispatch: any, history: any) => {
   }
 
 
-  console.log(UserInfo, ContestData, QuestionsData);
   dispatch(saveApiFetched(true));
   dispatch(saveSubmissionList(QuestionsData.data.result));
   dispatch(saveUserInfo({ ...UserInfo.data.result[0] }));
