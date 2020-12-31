@@ -8,13 +8,13 @@ import { QuestionMapType } from "types";
 
 const prepareData = (questionMap: QuestionMapType) => {
   const dataFiltered = Object.entries(questionMap).filter(([key, value]) => {
-    return value.solved === false;
+    return value.solved === false && value.contestId;
   });
   const data = dataFiltered.map((element) => {
     const key = element[0];
     const value = element[1];
 
-    const URL = (value.contestId > 10000) ? GYM_QUESTION_URL : QUESTION_URL;
+    const URL = value.contestId > 10000 ? GYM_QUESTION_URL : QUESTION_URL;
 
     return {
       id: key,
