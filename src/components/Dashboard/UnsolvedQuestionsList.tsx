@@ -70,7 +70,7 @@ const UnsolvedQuestionsList = () => {
         <Grid container style={{ paddingTop: "1rem", display: "flex" }}>
           {questionList.map((question) => {
             return (
-              <Typography style={{ paddingTop: "8px" }} component="span">
+              <Typography style={{ paddingTop: "8px" }} component="span" key={question.id}>
                 <Link
                   href={question!.url}
                   target="_blank"
