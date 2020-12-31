@@ -2,7 +2,7 @@ export const drawerWidth = 300;
 
 export const colorScheme: Record<string, string> = {
   "newbie": '#adb5bd',
-  "pupil": '#2d4f1e',
+  "pupil": 'green',
   "specialist": '#03A89E',
   "expert": '#0077b6',
   "candidate master": '#560bad',
