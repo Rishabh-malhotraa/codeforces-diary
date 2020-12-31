@@ -115,7 +115,7 @@ const SideBar = () => {
           </ListItemIcon>
           <ListItemText primary="Codeforces Handle" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component="a" href={`https://codeforces.com/blog/entry/86167`} target="_blank">
           <ListItemIcon>
             <BookmarksOutlinedIcon />
           </ListItemIcon>
@@ -125,7 +125,7 @@ const SideBar = () => {
       <Divider />
       <div className={classes.footer}>
         Made with &#9829; by Rishabh Malhotra{"  "}•{"  "}
-        <a href="https://github.com/rishabh-malhotraa" target="__blank">
+        <a href="https://github.com/Rishabh-malhotraa/codeforces-diary" target="__blank">
           Github
         </a>
       </div>

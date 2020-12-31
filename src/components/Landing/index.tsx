@@ -145,7 +145,7 @@ function LandingPage() {
           </div>
           <p className={classes.footer}>
             Made with &#9829; by Rishabh Malhotra{"  "}•{"  "}
-            <a href="https://github.com/rishabh-malhotraa" target="__blank">
+            <a href="https://github.com/Rishabh-malhotraa/codeforces-diary" target="__blank">
               Github
             </a>
           </p>
