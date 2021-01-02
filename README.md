@@ -187,6 +187,6 @@ Project Link: [https://codeforces-diary.netlify.app/](https://codeforces-diary.n
 [license-shield]: https://img.shields.io/github/license/Rishabh-malhotraa/codeforces-diary.svg?style=for-the-badge
 [license-url]: https://github.com/Rishabh-malhotraa/codeforces-diary/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/rishabh-malhotraa-4536a418b/
+[linkedin-url]: https://www.linkedin.com/in/rishabh-malhotra-4536a418b
 [product-screenshot]: images/Dashboard.png
 [product-screenshotII]: images/submission-list.png
