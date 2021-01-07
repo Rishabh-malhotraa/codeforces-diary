@@ -26,7 +26,7 @@
   <p align="center">
     Get the list of all questions you attempted on a particular date on codeforces, along with your account stats.
     <br />
-    <a href="https://github.com/Rishabh-malhotraa/codeforces-diary"><strong>Explore the project »</strong></a>
+    <a href="https://github.com/Rishabh-malhotraa/codeforces-diary/tree/main/src"><strong>Explore the project »</strong></a>
     <br />
     <br />
     <a href="https://codeforces-diary.netlify.app/">View Demo</a>
