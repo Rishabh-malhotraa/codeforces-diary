@@ -16,7 +16,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Rishabh-malhotraa/codeforces-diary">
+  <a href="https://codeforces-diary.netlify.app/">
     <img src="images/logo.svg" alt="Logo" width="256" height="256">
   </a>
 
