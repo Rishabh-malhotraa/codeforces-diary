@@ -72,7 +72,7 @@ Dashboard             |  List of Questions(click the cell on the heatmap)
 
 <br />
 
-I though there was not a good way to see at a glance all the questions you atttempted on CodeForces, to see your progress, so thats why i created a tool to do the same.
+I though there was not a good way to see at a glance all the questions you attempted on CodeForces, to see your progress, so thats why i created a tool to do the same.
 
 Click on the any of the heatmap box which is colored to get the list of all the question you attempted on that day.
 
